@@ -4,8 +4,10 @@ use std::io;
 use rand::Rng;
 
 fn main() {
-    println!("Rock Paper Scissors");
-    println!("1 - Rock, 2 - Paper, 3 - Scissors");
+    println!("Rust Acid Metal");
+    // rock(rust), paper(acid), scissors(metal)
+    println!("1 - Rust, 2 - Acid, 3 - Metal");
+    println!("Rust beats metal, acid beats rust, and metal beats acid");
 
     let mut p_points = 0;
     let mut c_points = 0;
@@ -32,27 +34,27 @@ fn main() {
         if p_throw == c_throw {
             println!("Player and Computer throw the same thing; TIE!");
         }
-        else if (p_throw == 1 && c_throw == 2) {
+        else if p_throw == 1 && c_throw == 2 {
             println!("Player's rock is covered by Computer's paper; LOSE!");
             c_points += 1;
         }
-        else if (p_throw == 1 && c_throw == 3) {
+        else if p_throw == 1 && c_throw == 3 {
             println!("Player rock bashes Computer's scissors: WIN!");
             p_points += 1;
         }
-        else if (p_throw == 2 && c_throw == 1) {
+        else if p_throw == 2 && c_throw == 1 {
             println!("Player's paper covers Computer's rock; WIN!");
             p_points += 1;
         }
-        else if (p_throw == 2 && c_throw == 3) {
+        else if p_throw == 2 && c_throw == 3 {
             println!("Player's paper is cut by Computer's scissors; LOSE!");
             c_points += 1;
         }
-        else if (p_throw == 3 && c_throw == 1) {
+        else if p_throw == 3 && c_throw == 1 {
             println!("Player's scissors are bashed by Computer's rock; LOSE!");
             c_points += 1;
         }
-        else if (p_throw == 3 && c_throw == 2) {
+        else if p_throw == 3 && c_throw == 2 {
             println!("Player's scissors cut through Computer's paper; WIN!");
             p_points += 1;
         }
