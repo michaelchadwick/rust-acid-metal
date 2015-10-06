@@ -8,6 +8,9 @@ fn main() {
     // rock(rust), paper(acid), scissors(metal)
     println!("1 - Rust, 2 - Acid, 3 - Metal");
     println!("Rust beats metal, acid beats rust, and metal beats acid");
+    println!("");
+    println!("First to 5 points wins the battle");
+    println!("");
 
     let mut p_points = 0;
     let mut c_points = 0;
@@ -15,6 +18,7 @@ fn main() {
     loop {
         println!("Please input your throw.");
 
+        // get player's throw
         let mut p_throw = String::new();
 
         io::stdin().read_line(&mut p_throw)
@@ -26,36 +30,43 @@ fn main() {
             Err(_) => continue,
         };
 
+        // throw is out of range, so ignore
+        if p_throw < 1 || p_throw > 3 {
+            continue;
+        }
+
+        // get computer's throw
         let c_throw = rand::thread_rng().gen_range(1, 3);
 
         println!("Plyr threw: {}", p_throw);
         println!("Comp threw: {}", c_throw);
 
+        // parse moves
         if p_throw == c_throw {
             println!("Player and Computer throw the same thing; TIE!");
         }
         else if p_throw == 1 && c_throw == 2 {
-            println!("Player's rock is covered by Computer's paper; LOSE!");
+            println!("Player's rust is dissolved by Computer's acid; LOSE!");
             c_points += 1;
         }
         else if p_throw == 1 && c_throw == 3 {
-            println!("Player rock bashes Computer's scissors: WIN!");
+            println!("Player rust takes over Computer's metal: WIN!");
             p_points += 1;
         }
         else if p_throw == 2 && c_throw == 1 {
-            println!("Player's paper covers Computer's rock; WIN!");
+            println!("Player's acid dissolves Computer's acid; WIN!");
             p_points += 1;
         }
         else if p_throw == 2 && c_throw == 3 {
-            println!("Player's paper is cut by Computer's scissors; LOSE!");
+            println!("Player's acid is beaten by Computer's metal; LOSE!");
             c_points += 1;
         }
         else if p_throw == 3 && c_throw == 1 {
-            println!("Player's scissors are bashed by Computer's rock; LOSE!");
+            println!("Player's metal is taken over by Computer's rust; LOSE!");
             c_points += 1;
         }
         else if p_throw == 3 && c_throw == 2 {
-            println!("Player's scissors cut through Computer's paper; WIN!");
+            println!("Player's metal beats Computer's acid; WIN!");
             p_points += 1;
         }
 
@@ -71,5 +82,10 @@ fn main() {
         }
     }
 
-    println!("Thank you for playing RPS!");
+    println!("Thank you for playing Rust Acid Metal!");
+}
+
+#[test]
+fn it_works() {
+    assert!(true);
 }
